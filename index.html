@@ -28,7 +28,6 @@
             line-height: 1.6;
         }
 
-        /* Navbar controlada en ancho */
         header {
             position: fixed;
             top: 0;
@@ -63,7 +62,6 @@
             color: var(--primary-color);
         }
 
-        /* Hero Section Mediana */
         .hero {
             height: 55vh;
             min-height: 400px;
@@ -173,7 +171,6 @@
             background: #f1f5f9;
         }
 
-        /* Container General */
         .container {
             max-width: 1050px;
             margin: 4rem auto;
@@ -187,7 +184,6 @@
             color: var(--primary-color);
         }
 
-        /* Sección de Presentación con la Imagen del Local */
         .showcase-section {
             background: var(--white);
             padding: 3rem 2rem;
@@ -253,13 +249,9 @@
         }
 
         @media (max-width: 768px) {
-            .showcase-section {
-                grid-template-columns: 1fr;
-                padding: 1.5rem;
-            }
+            .showcase-section { grid-template-columns: 1fr; padding: 1.5rem; }
         }
 
-        /* Tabla de Tarifas */
         .pricing-table {
             width: 100%;
             max-width: 950px;
@@ -286,7 +278,6 @@
             background: #f8fafc;
         }
 
-        /* Cotizador Interactivo */
         .calculator-card {
             background: var(--white);
             padding: 2.2rem;
@@ -328,7 +319,6 @@
             text-align: center;
         }
 
-        /* Acordeones */
         .accordion-item {
             background: var(--white);
             border-radius: 8px;
@@ -370,7 +360,6 @@
             padding-bottom: 1.1rem;
         }
 
-        /* Galería */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -406,7 +395,7 @@
         }
 
         .gallery-card:hover img {
-            transform: scale(1.2); 
+            transform: scale(1.2);
         }
 
         .gallery-info {
@@ -423,7 +412,6 @@
             font-size: 0.95rem;
         }
 
-        /* Contacto */
         form {
             background: var(--white);
             padding: 2.2rem;
@@ -465,7 +453,6 @@
             background: var(--primary-dark);
         }
 
-        /* Ventana Modal YouTube */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -535,12 +522,11 @@
             font-size: 0.9rem;
             width: 100%;
         }
-        
+
         .modal-close:hover {
             color: var(--text-main);
         }
 
-        /* Footer */
         footer {
             background: #0f172a;
             color: #94a3b8;
@@ -570,14 +556,9 @@
             <div class="particle"></div>
             <div class="particle"></div>
         </div>
-
         <h1 id="secretTitle" title="Haz clic varias veces...">F7 Systems & Soluciones</h1>
         <p class="typewriter">Centro de Cómputo Profesional: Impresiones, copias, anillados y desarrollo tecnológico a tu medida.</p>
-        
-        <div id="statusBadge" class="status-badge">
-            Verificando horario...
-        </div>
-
+        <div id="statusBadge" class="status-badge">Verificando horario...</div>
         <a href="#contacto" class="btn-cta">Iniciar Solicitud</a>
     </section>
 
@@ -601,33 +582,21 @@
     <!-- Sección de Servicios -->
     <div class="container" id="servicios">
         <h2 class="section-title">Nuestros Servicios</h2>
-
         <div class="accordion-item">
             <div class="accordion-header">Impresiones y Copias (B/N y Color) <span>▼</span></div>
-            <div class="accordion-content">
-                Impresiones y copias de alta calidad en blanco y negro o full color, desde archivos digitales, memorias USB o correo electrónico.
-            </div>
+            <div class="accordion-content">Impresiones y copias de alta calidad en blanco y negro o full color, desde archivos digitales, memorias USB o correo electrónico.</div>
         </div>
-
         <div class="accordion-item">
             <div class="accordion-header">Anillados y Empastados <span>▼</span></div>
-            <div class="accordion-content">
-                Servicio profesional de anillado plástico y metálico para documentos escolares, universitarios, informes y trabajos especiales.
-            </div>
+            <div class="accordion-content">Servicio profesional de anillado plástico y metálico para documentos escolares, universitarios, informes y trabajos especiales.</div>
         </div>
-
         <div class="accordion-item">
             <div class="accordion-header">Mantenimiento y Soporte de PC <span>▼</span></div>
-            <div class="accordion-content">
-                Optimización de sistemas, limpieza profunda de hardware, prevención de fallas y soporte técnico especializado.
-            </div>
+            <div class="accordion-content">Optimización de sistemas, limpieza profunda de hardware, prevención de fallas y soporte técnico especializado.</div>
         </div>
-
         <div class="accordion-item">
             <div class="accordion-header">Desarrollo de Software y Asesoría <span>▼</span></div>
-            <div class="accordion-content">
-                Creación de aplicaciones a medida, scripts automatizados y consultoría informática profesional.
-            </div>
+            <div class="accordion-content">Creación de aplicaciones a medida, scripts automatizados y consultoría informática profesional.</div>
         </div>
     </div>
 
@@ -635,56 +604,48 @@
     <div class="container" id="galeria">
         <h2 class="section-title">Nuestros Trabajos y Servicios</h2>
         <div class="gallery-grid">
-            
             <div class="gallery-card">
                 <div class="gallery-img-container">
                     <img src="images/copias.jpg" alt="Copias e Impresiones">
-                    
                 </div>
                 <div class="gallery-info">
                     <h3>Copias e Impresiones</h3>
                     <p>Resultados nítidos y vibrantes para documentos y proyectos escolares o de oficina.</p>
                 </div>
             </div>
-
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                    <img src="images/copias.jpg" alt="Mantenimiento">
+                    <img src="images/mantenimiento.jpg" alt="Mantenimiento">
                 </div>
                 <div class="gallery-info">
                     <h3>Mantenimiento de PC</h3>
                     <p>Optimización, limpieza y reparación especializada de equipos de escritorio.</p>
                 </div>
             </div>
-
             <div class="gallery-card">
                 <div class="gallery-img-container">
-                <img src="images/copias.jpg" alt="Soluciones de Software">
-            </div>
+                    <img src="images/software.jpg" alt="Soluciones de Software">
+                </div>
                 <div class="gallery-info">
                     <h3>Soluciones de Software</h3>
                     <p>Desarrollo de sistemas modulares e interfaces automatizadas a medida.</p>
                 </div>
             </div>
-
             <div class="gallery-card">
                 <div class="gallery-img-container">
-            <img src="images/copias.jpg" alt="Asesoría y Consultas">
-                    
+                    <img src="images/asesoria.jpg" alt="Asesoría y Consultas">
                 </div>
                 <div class="gallery-info">
                     <h3>Asesoría y Consultas</h3>
                     <p>Atención personalizada y soporte técnico para cualquier requerimiento.</p>
                 </div>
             </div>
-
         </div>
     </div>
 
     <!-- Sección de Tarifas y Cotizador -->
     <div class="container">
         <h2 class="section-title">Tarifas y Cotizador Rápido</h2>
-        
         <table class="pricing-table">
             <thead>
                 <tr>
@@ -769,16 +730,12 @@
         <p>&copy; 2026 F7 Systems. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script de contador counter.dev (Reemplaza con tu propio script de counter.dev cuando lo crees) -->
-    <!-- <script data-id="TU_ID_DE_COUNTER" src="https://cdn.counter.dev/script.js" id="counter_script" async></script> -->
-
     <!-- JavaScript -->
     <script>
         // Horario en tiempo real
         const now = new Date();
         const hour = now.getHours();
         const badge = document.getElementById('statusBadge');
-        
         if (hour >= 8 && hour < 19) {
             badge.style.backgroundColor = 'rgba(34, 197, 94, 0.9)';
             badge.style.color = '#ffffff';
@@ -805,7 +762,7 @@
         quantity.addEventListener('input', updateCalculation);
         updateCalculation();
 
-        // Easter Egg (7 clics)
+        // Easter Egg (7 clics en el título principal)
         const secretTitle = document.getElementById('secretTitle');
         const secretModal = document.getElementById('secretModal');
         const closeModal = document.getElementById('closeModal');
