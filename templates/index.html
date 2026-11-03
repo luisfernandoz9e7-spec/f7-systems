@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Cómputo y Servicios | F7 Systems</title>
+    <style>
+        :root {
+            --primary-color: #00239F;
+            --primary-dark: #00186b;
+            --accent-color: #3b82f6;
+            --bg-light: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navbar controlada en ancho */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 10%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section Mediana */
+        .hero {
+            height: 55vh;
+            min-height: 400px;
+            background: linear-gradient(135deg, #00186b, #00239F, #1d4ed8, #3b82f6);
+            background-size: 300% 300%;
+            animation: gradientAnimation 12s ease infinite;
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 2rem;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .floating-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            animation: floatUp 15s linear infinite;
+        }
+
+        .particle:nth-child(1) { width: 90px; height: 35px; border-radius: 50px; left: 10%; animation-duration: 12s; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 130px; height: 50px; border-radius: 50px; left: 70%; animation-duration: 18s; animation-delay: 3s; }
+        .particle:nth-child(3) { width: 70px; height: 30px; border-radius: 50px; left: 40%; animation-duration: 10s; animation-delay: 5s; }
+        .particle:nth-child(4) { width: 110px; height: 40px; border-radius: 50px; left: 85%; animation-duration: 14s; animation-delay: 2s; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(105vh) scale(0.8); opacity: 0; }
+            20% { opacity: 0.5; }
+            80% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+
+        .hero > *:not(.floating-particles) {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            max-width: 900px;
+            width: 100%;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.2s, text-shadow 0.3s;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .hero h1:hover {
+            text-shadow: 0 6px 25px rgba(255,255,255,0.4);
+        }
+
+        .typewriter {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            max-width: 700px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-cta {
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-4px);
+            background: #f1f5f9;
+        }
+
+        /* Container General */
+        .container {
+            max-width: 1050px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        h2.section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Sección de Presentación con la Imagen del Local */
+        .showcase-section {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            max-width: 950px;
+            margin: 4rem auto 2rem auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .showcase-img-container {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 35, 159, 0.15);
+        }
+
+        .showcase-img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .showcase-img-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .showcase-text h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .showcase-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .showcase-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .showcase-features li {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .showcase-features li::before {
+            content: "✓";
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .showcase-section {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+        }
+
+        /* Tabla de Tarifas */
+        .pricing-table {
+            width: 100%;
+            max-width: 950px;
+            margin: 0 auto 3rem auto;
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-collapse: collapse;
+        }
+
+        .pricing-table th, .pricing-table td {
+            padding: 1.1rem 1.4rem;
+            text-align: left;
+        }
+
+        .pricing-table th {
+            background: var(--primary-color);
+            color: var(--white);
+            font-size: 1.05rem;
+        }
+
+        .pricing-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        /* Cotizador Interactivo */
+        .calculator-card {
+            background: var(--white);
+            padding: 2.2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 950px;
+            margin: 0 auto 3rem auto;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .calc-group {
+            margin-bottom: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .calc-group label {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .calc-group select, .calc-group input {
+            padding: 0.8rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .calc-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #f1f5f9;
+            border-radius: 6px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        /* Acordeones */
+        .accordion-item {
+            background: var(--white);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            max-width: 950px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .accordion-header {
+            padding: 1.1rem 1.4rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background 0.2s;
+        }
+
+        .accordion-header:hover {
+            background: #f8fafc;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            padding: 0 1.4rem;
+            color: var(--text-muted);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+            padding-bottom: 1.1rem;
+        }
+
+        /* Galería */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .gallery-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-img-container {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.2); 
+        }
+
+        .gallery-info {
+            padding: 1.2rem;
+        }
+
+        .gallery-info h3 {
+            margin-bottom: 0.4rem;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .gallery-info p {
+            font-size: 0.95rem;
+        }
+
+        /* Contacto */
+        form {
+            background: var(--white);
+            padding: 2.2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        form input, form textarea {
+            padding: 0.9rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        form input:focus, form textarea:focus {
+            border-color: var(--primary-color);
+        }
+
+        form button {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        form button:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Ventana Modal YouTube */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-top: 5px solid var(--primary-color);
+            animation: modalPop 0.3s ease-out;
+        }
+
+        @keyframes modalPop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .modal-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-btn {
+            background: #ff0000;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .modal-btn:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+        }
+
+        .modal-close {
+            margin-top: 1rem;
+            display: block;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+        
+        .modal-close:hover {
+            color: var(--text-main);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <header>
+        <a href="#" class="logo">F7 Systems</a>
+        <nav>
+            <a href="#servicios">Servicios</a>
+            <a href="#galeria">Galería</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- Sección Hero Mediana -->
+    <section class="hero">
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <h1 id="secretTitle" title="Haz clic varias veces...">F7 Systems & Soluciones</h1>
+        <p class="typewriter">Centro de Cómputo Profesional: Impresiones, copias, anillados y desarrollo tecnológico a tu medida.</p>
+        
+        <div id="statusBadge" class="status-badge">
+            Verificando horario...
+        </div>
+
+        <a href="#contacto" class="btn-cta">Iniciar Solicitud</a>
+    </section>
+
+    <!-- Sección de Presentación con la Imagen del Local -->
+    <section class="showcase-section">
+        <div class="showcase-img-container">
+            <img src="{{ url_for('static', filename='images/local.jpg') }}" alt="Centro de Cómputo F7 Systems">
+        </div>
+        <div class="showcase-text">
+            <h3>Su Socio Tecnológico Integral</h3>
+            <p>Brindamos soluciones profesionales que combinan un centro de cómputo avanzado con desarrollo de software y consultoría digital de alta calidad.</p>
+            <ul class="showcase-features">
+                <li>Atención rápida y personalizada</li>
+                <li>Equipos e infraestructura moderna</li>
+                <li>Software y soporte técnico especializado</li>
+            </ul>
+            <a href="#contacto" class="btn-cta" style="display: inline-block; background: var(--primary-color); color: white; padding: 0.7rem 1.5rem; border-radius: 6px; font-size: 0.95rem;">Contáctanos hoy</a>
+        </div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <div class="container" id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+
+        <div class="accordion-item">
+            <div class="accordion-header">Impresiones y Copias (B/N y Color) <span>▼</span></div>
+            <div class="accordion-content">
+                Impresiones y copias de alta calidad en blanco y negro o full color, desde archivos digitales, memorias USB o correo electrónico.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">Anillados y Empastados <span>▼</span></div>
+            <div class="accordion-content">
+                Servicio profesional de anillado plástico y metálico para documentos escolares, universitarios, informes y trabajos especiales.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">Mantenimiento y Soporte de PC <span>▼</span></div>
+            <div class="accordion-content">
+                Optimización de sistemas, limpieza profunda de hardware, prevención de fallas y soporte técnico especializado.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">Desarrollo de Software y Asesoría <span>▼</span></div>
+            <div class="accordion-content">
+                Creación de aplicaciones a medida, scripts automatizados y consultoría informática profesional.
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Galería -->
+    <div class="container" id="galeria">
+        <h2 class="section-title">Nuestros Trabajos y Servicios</h2>
+        <div class="gallery-grid">
+            
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="{{ url_for('static', filename='images/copias.jpg') }}" alt="Copias e Impresiones">
+                </div>
+                <div class="gallery-info">
+                    <h3>Copias e Impresiones</h3>
+                    <p>Resultados nítidos y vibrantes para documentos y proyectos escolares o de oficina.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="{{ url_for('static', filename='images/mantenimiento.jpg') }}" alt="Mantenimiento de PC">
+                </div>
+                <div class="gallery-info">
+                    <h3>Mantenimiento de PC</h3>
+                    <p>Optimización, limpieza y reparación especializada de equipos de escritorio.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="{{ url_for('static', filename='images/software.jpg') }}" alt="Soluciones de Software">
+                </div>
+                <div class="gallery-info">
+                    <h3>Soluciones de Software</h3>
+                    <p>Desarrollo de sistemas modulares e interfaces automatizadas a medida.</p>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <div class="gallery-img-container">
+                    <img src="{{ url_for('static', filename='images/asesoria.jpg') }}" alt="Asesoría y Consultas">
+                </div>
+                <div class="gallery-info">
+                    <h3>Asesoría y Consultas</h3>
+                    <p>Atención personalizada y soporte técnico para cualquier requerimiento.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Sección de Tarifas y Cotizador -->
+    <div class="container">
+        <h2 class="section-title">Tarifas y Cotizador Rápido</h2>
+        
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th>Servicio / Trabajo</th>
+                    <th>Detalle</th>
+                    <th>Precio Referencial</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Copias B/N</strong></td>
+                    <td>Por página (Copias directas)</td>
+                    <td>$0.03</td>
+                </tr>
+                <tr>
+                    <td><strong>Impresiones B/N</strong></td>
+                    <td>Por página (Desde archivo)</td>
+                    <td>$0.10</td>
+                </tr>
+                <tr>
+                    <td><strong>Impresión a Color</strong></td>
+                    <td>Por página (Alta resolución)</td>
+                    <td>$0.25</td>
+                </tr>
+                <tr>
+                    <td><strong>Anillado Plástico</strong></td>
+                    <td>Incluye tapas protectoras y espiral</td>
+                    <td>$1.00</td>
+                </tr>
+                <tr>
+                    <td><strong>Mantenimiento de PC</strong></td>
+                    <td>Limpieza de hardware y optimización</td>
+                    <td>$15.00 en adelante</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="calculator-card">
+            <h3 style="color: var(--primary-color); margin-bottom: 1.5rem; text-align: center;">🧮 Cotizador Rápido de Impresiones</h3>
+            <div class="calc-group">
+                <label for="serviceType">Selecciona el tipo de servicio:</label>
+                <select id="serviceType">
+                    <option value="0.03">Copia Blanco y Negro ($0.03 c/u)</option>
+                    <option value="0.10">Impresión Blanco y Negro ($0.10 c/u)</option>
+                    <option value="0.25">Impresión a Color ($0.25 c/u)</option>
+                    <option value="1.00">Anillado Plástico ($1.00 c/u)</option>
+                </select>
+            </div>
+            <div class="calc-group">
+                <label for="quantity">Cantidad de páginas / unidades:</label>
+                <input type="number" id="quantity" min="1" value="10">
+            </div>
+            <div class="calc-result" id="calcResult">
+                Costo Estimado: $0.30
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de Contacto -->
+    <div class="container" id="contacto">
+        <h2 class="section-title">Escríbenos o Visítanos</h2>
+        <form id="contactForm">
+            <input type="text" placeholder="Tu Nombre" required>
+            <input type="email" placeholder="Tu Correo o Teléfono" required>
+            <textarea rows="5" placeholder="¿Qué servicio necesitas o qué archivo deseas imprimir?" required></textarea>
+            <button type="submit">Enviar Solicitud</button>
+        </form>
+    </div>
+
+    <!-- Ventana Modal YouTube -->
+    <div id="secretModal" class="modal-overlay">
+        <div class="modal-card">
+            <h3>¡Acceso F7 Systems!</h3>
+            <p>Has descubierto el menú oculto. Visita nuestro canal oficial para ver tutoriales y proyectos en video.</p>
+            <a href="https://www.youtube.com/@LuisFernandoZ-c1d" target="_blank" class="modal-btn">Ir al Canal de YouTube</a>
+            <button class="modal-close" id="closeModal">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 F7 Systems. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script de contador counter.dev (Reemplaza con tu propio script de counter.dev cuando lo crees) -->
+    <!-- <script data-id="TU_ID_DE_COUNTER" src="https://cdn.counter.dev/script.js" id="counter_script" async></script> -->
+
+    <!-- JavaScript -->
+    <script>
+        // Horario en tiempo real
+        const now = new Date();
+        const hour = now.getHours();
+        const badge = document.getElementById('statusBadge');
+        
+        if (hour >= 8 && hour < 19) {
+            badge.style.backgroundColor = 'rgba(34, 197, 94, 0.9)';
+            badge.style.color = '#ffffff';
+            badge.innerText = '🟢 Abierto ahora - ¡Visítanos!';
+        } else {
+            badge.style.backgroundColor = 'rgba(239, 68, 68, 0.9)';
+            badge.style.color = '#ffffff';
+            badge.innerText = '🔴 Cerrado temporalmente';
+        }
+
+        // Cotizador Interactivo
+        const serviceType = document.getElementById('serviceType');
+        const quantity = document.getElementById('quantity');
+        const calcResult = document.getElementById('calcResult');
+
+        function updateCalculation() {
+            const price = parseFloat(serviceType.value);
+            const qty = parseInt(quantity.value) || 0;
+            const total = price * qty;
+            calcResult.innerText = `Costo Estimado: $${total.toFixed(2)}`;
+        }
+
+        serviceType.addEventListener('change', updateCalculation);
+        quantity.addEventListener('input', updateCalculation);
+        updateCalculation();
+
+        // Easter Egg (7 clics)
+        const secretTitle = document.getElementById('secretTitle');
+        const secretModal = document.getElementById('secretModal');
+        const closeModal = document.getElementById('closeModal');
+        let clickCount = 0;
+
+        secretTitle.addEventListener('click', () => {
+            clickCount++;
+            if (clickCount === 7) {
+                secretModal.style.display = 'flex';
+                clickCount = 0;
+            }
+        });
+
+        closeModal.addEventListener('click', () => {
+            secretModal.style.display = 'none';
+        });
+
+        secretModal.addEventListener('click', (e) => {
+            if (e.target === secretModal) {
+                secretModal.style.display = 'none';
+            }
+        });
+
+        // Acordeones
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Formulario
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
